@@ -10,6 +10,8 @@ from scr.components.data_transformation import dataTransformation
 # dataclasses module is used to create data classes. which are used to store the data and the configuration and pass it to the other classes and functions and methods and also used to store the data in the form of objects.
 
 from dataclasses import dataclass
+from scr.components.model_trainer import ModelTrainer
+from scr.components.model_trainer import ModelTrainerConfig
 
 @dataclass
 class DataIngestionConfig:
@@ -59,4 +61,7 @@ if "__main__"==__name__:
     train_data,test_data=obj.initiate_data_ingestion()
 
     data_transformation_obj=dataTransformation()
-    data_transformation_obj.initiate_data_transformation(train_data,test_data)
+    train_arr,test_arr,_= data_transformation_obj.initiate_data_transformation(train_data,test_data)
+
+    modeltrainer=ModelTrainer()
+    print(modeltrainer.initiate_model_trainer(train_arr,test_arr))
