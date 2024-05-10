@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My First Machine Learning Project</title>
+    <link rel="stylesheet" href="/static/index.css">
+</head>
+<body>
+    <div class="container">
+        <div class="heading-box">
+            <h1 class="heading">My First Machine Learning Project</h1>
+        </div>
+        <div class="content-box">
+            <p class="content">Welcome to my first machine learning project. This project aims to predict student exam performance based on various factors such as gender, ethnicity, parental level of education, lunch type, test preparation course, writing score, and reading score.</p>
+            <p class="content">The prediction is made using machine learning algorithms trained on a dataset containing information about students' performance in exams.</p>
+        </div>
+        <div class="button-box" >
+            <a href="{{ url_for('predict_datapoint')}}" class="button" onclick="smoothScroll()">Go to Home Page <span class="arrow">&darr;</span></a>
+        </div>
+    </div>
+
+    <script>
+        function smoothScroll() {
+            const target = document.querySelector('#home');
+            window.scrollTo({
+                top: target.offsetTop,
+                behavior: 'smooth'
+            });
+        }
+    </script>
+</body>
+</html>
