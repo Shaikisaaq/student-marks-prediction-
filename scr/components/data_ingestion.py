@@ -6,6 +6,7 @@ import pandas as pd
 
 from sklearn.model_selection import train_test_split
 
+from scr.components.data_transformation import dataTransformation
 # dataclasses module is used to create data classes. which are used to store the data and the configuration and pass it to the other classes and functions and methods and also used to store the data in the form of objects.
 
 from dataclasses import dataclass
@@ -41,6 +42,12 @@ class DataIngestion:
 
             logging.info("Data split successful")
             logging.info("test and train data stored in the artifact folder")
+            
+            return(
+                self.Ingestion_config.train_data_path,
+                self.Ingestion_config.test_data_path
+
+            )
 
         except Exception as e:
             raise CustomException(e,sys)
@@ -48,4 +55,8 @@ class DataIngestion:
 
 if "__main__"==__name__:
     obj = DataIngestion()
-    obj.initiate_data_ingestion()
+    
+    train_data,test_data=obj.initiate_data_ingestion()
+
+    data_transformation_obj=dataTransformation()
+    data_transformation_obj.initiate_data_transformation(train_data,test_data)
